@@ -1,2 +1,2 @@
 # pelias-basic-vagrant
-Basic pelias from scratch (for geocoding implementation)
+Basic pelias.io from scratch (for geocoding implementation)

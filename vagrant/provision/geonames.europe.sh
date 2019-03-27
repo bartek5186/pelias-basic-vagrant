@@ -8,6 +8,6 @@ european_countries=( "PL" "DE" "AD" "AL" "AT" "AX" "BA" "BG" "BE"
  "RU" "SE" "SI" "SJ" "SK" "SM" "UA" "VA" "CS")
                                                                                  
 for country in ${european_countries[@]}; do                                     
- sed -i 's/"countryCode".*/"countryCode": "${country}"/g' /home/ubuntu/pelias.json
+ sed -i 's/"countryCode".*/"countryCode": "'${country}'"/g' /home/ubuntu/pelias.json
  npm start
 done

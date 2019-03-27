@@ -1,0 +1,10 @@
+[Unit]
+Description=Pelias API Service
+
+[Service]
+User=ubuntu
+Type=simple
+WorkingDirectory=/home/ubuntu/pip-service
+ExecStart=/usr/bin/npm start
+[Install]
+WantedBy=default.target

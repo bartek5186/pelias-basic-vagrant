@@ -44,13 +44,15 @@ apt-get install -y nodejs
 
 info "Install Java 8 for ElasticSearch 5"
 add-apt-repository ppa:webupd8team/java
+apt-get update
+echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections
 apt install -y oracle-java8-set-default
 
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.14.deb
 dpkg -i elasticsearch-5.6.14.deb
 
 #@todo this not work yet, address to 127.0.0.1 in cofig
-sed -i 's/#network.host:/network.host: 127.0.0.1' /etc/elasticsearch/elasticsearch.yml
+sed -i 's/#network.host: 192.168.0.1/network.host: 127.0.0.1/g' /etc/elasticsearch/elasticsearch.yml
 
 systemctl enable elasticsearch.service
 systemctl start elasticsearch.service
@@ -59,16 +61,22 @@ sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install analysis-icu
 # check under http://pelias.devel:9200/_cat/health?v
 systemctl restart elasticsearch.service
 
-# @todo: Install LibPostal, and Enable IT in pelias
-# info "Install LibPostal"
+Minimum:
 
-#git clone https://github.com/openvenues/libpostal
-#cd libpostal
-#./bootstrap.sh
-#./configure --datadir=/home/vagrant/libpostal-data
-#make -j4
-#sudo make install
-#sudo ldconfig
+Pelias schema
+The Pelias API and other Pelias services
+Importer(s)
+
+
+info "Install LibPostal"
+
+git clone https://github.com/openvenues/libpostal
+cd libpostal
+./bootstrap.sh
+./configure --datadir=/home/vagrant/libpostal-data
+make -j4
+make install
+ldconfig
 
 # @todo - remebmer to install in properly custom directories
 # @todo - remember to pelias.json in custom location ex /etc/pelias.json not in ~
@@ -80,7 +88,9 @@ systemctl restart elasticsearch.service
 # BUG: command npm run create_index - can work, but there are problem with POST / PUT.
 # program want POST, but cannot do it. There are some works in code. (apply by sed?)
 #For the POST error you can add the method you want to use to create the index. The line 19 of the file scripts/create_index.js look like this
-#`client.indices.create( {method:'PUT', index: indexName, body: schema }, function( err, res ){`
+#FIX
+
+
 
 # 2. whosonfirst
 #    a) download - npm run download or "npm run download -- --admin-only"

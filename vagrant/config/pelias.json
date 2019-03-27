@@ -1,0 +1,108 @@
+{
+      "esclient": {
+         "apiVersion": "2.4",
+         "keepAlive": true,
+         "requestTimeout": "120000",
+         "hosts": [{
+           "env": "development",
+           "protocol": "http",
+           "host": "127.0.0.1",
+           "port": 9200
+         }],
+         "log": [{
+           "type": "stdio",
+           "json": false,
+           "level": [ "error", "warning" ]
+         }]
+       },
+       "elasticsearch": {
+         "settings": {
+           "index": {
+             "number_of_replicas": "0",
+             "number_of_shards": "5",
+             "refresh_interval": "1m"
+           }
+         }
+       },
+       "interpolation": {
+         "client": {
+           "adapter": "null"
+         }
+       },
+       "dbclient": {
+         "statFrequency": 10000
+       },
+       "api": {
+         "accessLog": "common",
+         "textAnalyzer": "libpostal",
+         "host": "https://geo.domain.com/",
+         "indexName": "pelias",
+         "version": "1.0",
+         "services": {
+           "libpostal": {
+             "url": "http://127.0.0.1:8080"
+           },
+           "pip": {
+             "url": "http://domain.com:3102"
+            },
+           "placeholder": {
+             "url": "http://domain.com:3000"
+           }
+          },
+         "targets": {
+           "auto_discover": false,
+           "canonical_sources": ["whosonfirst", "geonames"],
+           "layers_by_source": {
+             "geonames": [
+               "country", "macroregion", "region", "county", "localadmin", "locality", "borough",
+               "neighbourhood"
+             ],
+             "whosonfirst": [
+               "continent", "empire", "country", "dependency", "macroregion", "region", "locality",
+               "localadmin", "macrocounty", "county", "macrohood", "borough", "neighbourhood", "postalcode"
+             ]
+           },
+           "source_aliases": {
+             "gn":  [ "geonames" ],
+             "wof": [ "whosonfirst" ]
+           },
+           "layer_aliases": {
+             "coarse": [
+               "continent", "empire", "country", "dependency", "macroregion", "region", "locality",
+               "localadmin", "macrocounty", "county", "macrohood", "borough", "neighbourhood", "postalcode"
+             ]
+           }
+         }
+       },
+       "schema": {
+         "indexName": "pelias"
+       },
+       "logger": {
+         "level": "debug",
+         "timestamp": true,
+         "colorize": true
+       },
+       "acceptance-tests": {
+         "endpoints": {
+           "local": "https://geo.flotea.pl/v1/",
+           "prod": "https://geo.flotea.pl/v1/"
+         }
+       },
+       "imports": {
+         "adminLookup": {
+           "enabled": true,
+           "maxConcurrentRequests": 100,
+           "usePostalCities": true
+         },
+         "geonames": {
+           "datapath": "/home/ubuntu/geonames",
+           "countryCode": "PL"
+         },
+         "whosonfirst": {
+           "datapath": "/home/ubuntu/whosonfirst",
+           "importVenues": false,
+           "importPostalcodes": true,
+           "importPlace": 102191581
+         }
+       }
+     }

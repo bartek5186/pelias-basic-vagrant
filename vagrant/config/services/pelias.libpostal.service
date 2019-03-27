@@ -1,0 +1,10 @@
+[Unit]
+Description=Pelias Libpostal Service
+
+[Service]
+User=ubuntu
+Type=simple
+WorkingDirectory=/home/ubuntu/go-whosonfirst-libpostal/bin
+ExecStart=/home/ubuntu/go-whosonfirst-libpostal/bin/wof-libpostal-server
+[Install]
+WantedBy=default.target

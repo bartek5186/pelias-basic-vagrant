@@ -10,3 +10,8 @@ ip: 192.168.66.66
 cpus: 2
 # Virtual machine RAM
 memory: 8196
+
+@todo Move there more configuration
+
+domain: pelias.devel
+https: false

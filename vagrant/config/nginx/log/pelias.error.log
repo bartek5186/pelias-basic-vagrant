@@ -1,4 +1,0 @@
-2019/02/09 13:22:27 [error] 4263#4263: *1 directory index of "/" is forbidden, client: 192.168.66.1, server: pelias.devel, request: "GET / HTTP/1.1", host: "pelias.devel"
-2019/02/09 13:22:27 [error] 4263#4263: *1 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 192.168.66.1, server: pelias.devel, request: "GET /favicon.ico HTTP/1.1", host: "pelias.devel", referrer: "http://pelias.devel/"
-2019/02/09 13:22:31 [error] 4263#4263: *2 directory index of "/" is forbidden, client: 192.168.66.1, server: pelias.devel, request: "GET / HTTP/1.1", host: "pelias.devel"
-2019/02/09 13:22:31 [error] 4263#4263: *2 rewrite or internal redirection cycle while internally redirecting to "/index.html", client: 192.168.66.1, server: pelias.devel, request: "GET /favicon.ico HTTP/1.1", host: "pelias.devel", referrer: "http://pelias.devel/"

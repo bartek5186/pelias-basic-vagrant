@@ -7,9 +7,12 @@ function info {
 }
 
 #@todo restart and run rest services (kabana, api, etc)
-info "Restart web-stack"
-service nginx restart
+info "Restart Pelias"
 service elasticsearch restart
+service pelias.pip restart
+service pelias.libpostal restart
+service pelias.placeholder restart
+service pelias.api restart
 
 info "Palias - Hello Dev!"
 echo "Provision-script user: `whoami`"

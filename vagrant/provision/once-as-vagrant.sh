@@ -12,6 +12,12 @@ for repository in schema whosonfirst geonames openaddresses openstreetmap polyli
 	popd > /dev/null                                      # return to code directory
 done
 
+
+info "Install Schema, fix and create_index on ElasticSearch"
+sed -i "s/client.indices.create( { index: indexName, body: schema }/client.indices.create( {method: 'PUT', index: indexName, body: schema }/g" scripts/create_index.js
+./schema/bin/create_index
+
+
 info "Create bash-alias 'app' for vagrant user"
 echo 'alias app="cd /app"' | tee /home/vagrant/.bash_aliases
 
